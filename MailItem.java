@@ -15,7 +15,7 @@ public class MailItem
     private String asunto;
     // The text of the message.
     private String message;
-    
+
     /**
      * Create a mail item from sender to the given recipient,
      * containing the given message.
@@ -46,7 +46,7 @@ public class MailItem
     {
         return to;
     }
-    
+
     /**
      * 
      */
@@ -62,7 +62,7 @@ public class MailItem
     {
         return message;
     }
-    
+
     /**
      * Print this mail message to the text terminal.
      */

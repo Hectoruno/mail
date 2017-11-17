@@ -11,6 +11,8 @@ public class MailClient
     private MailServer server;
     // The user running this client.
     private String user;
+    
+    private MailItem LastMail;
 
     /**
      * Create a mail client run by user and attached to the given server.
@@ -28,7 +30,7 @@ public class MailClient
     {
         return server.getNextMailItem(user);
     }
-
+    
     /**
      * Print the next mail item (if any) for this user to the text 
      * terminal.
@@ -41,7 +43,16 @@ public class MailClient
         }
         else {
             item.print();
+            LastMail = item;
         }
+    }
+
+    /**
+     * Print the last mail item
+     */
+    public void printLastMail()
+    {
+        LastMail.print();
     }
 
     /**
@@ -50,9 +61,9 @@ public class MailClient
      * @param to The intended recipient.
      * @param message The text of the message to be sent.
      */
-    public void sendMailItem(String to, String message)
+    public void sendMailItem(String to, String message, String asunto)
     {
-        MailItem item = new MailItem(user, to, message);
+        MailItem item = new MailItem(user, to, message, asunto);
         server.post(item);
     }
 }
