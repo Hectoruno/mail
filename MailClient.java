@@ -11,7 +11,7 @@ public class MailClient
     private MailServer server;
     // The user running this client.
     private String user;
-    
+
     private MailItem LastMail;
 
     /**
@@ -30,7 +30,7 @@ public class MailClient
     {
         return server.getNextMailItem(user);
     }
-    
+
     /**
      * Print the next mail item (if any) for this user to the text 
      * terminal.
@@ -44,15 +44,21 @@ public class MailClient
         else {
             item.print();
             LastMail = item;
-        }
-    }
+        } 
+    }  
 
     /**
      * Print the last mail item
      */
     public void printLastMail()
     {
-        LastMail.print();
+        MailItem item = server.getNextMailItem(user);
+        if(item == null) {
+            System.out.println("Error.");
+        }
+        else {
+            LastMail.print();
+        }
     }
 
     /**
